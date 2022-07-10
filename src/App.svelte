@@ -1,12 +1,17 @@
 <script>
   import logo from './assets/svelte.png'
-  import Counter from './lib/Counter.svelte'
+  import Form from './lib/Form.svelte'
 </script>
 
 <main>
-  <img src={logo} alt="Svelte Logo" />
-  <h1>Hello world!</h1>
-
-  <Counter />
+  <section>
+    <h1>CipherApp</h1>
+    
+    <p>Traduza mensagens encriptadas ou encripte suas mensagens.</p>
+  </section>
+    
+  <Form />
+  
+  <textarea readonly name="input-msg" id="output-msg" cols="50" rows="10"></textarea>
 
 </main>
