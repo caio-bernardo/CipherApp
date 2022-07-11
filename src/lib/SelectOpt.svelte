@@ -6,6 +6,7 @@ const ciphers = [
 
 ];
 
+
 </script>
 
 <label for="select-cipher">Escolha uma cifra:</label>
