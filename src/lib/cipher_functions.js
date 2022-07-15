@@ -1,19 +1,26 @@
- /*
- FUNCAO CIFRAR VIGENERE MSG CHAVE METODO
-    SE TAMANHO DA CHAVE FOR MENOR QUE O TAMANHO DA MENSAGEM (EXCLUINDO ESPAÇOS)
-        ADICIONE A CHAVE A SI MESMA ATÉ QUE TENHA TAMANHO IGUAL O DA MENSAGEM
-    PARA CADA CARACTERE NA CHAVE TRANSFORME NO INDEX CORRESPONDENTE DO ALFABETO
-    PARA CADA LETRA NA MENSAGEM 
- */
-
 const alpha = "abcdefghijklmnopqrstuvwxyz";
 
+// TODO substitute free objects by Cipher class objects.
+class Cipher {
+    constructor(name, desc, needKey) {
+        this.name = name;
+        this.desc = desc;
+        this.needKey = needKey;
+    }
+
+    get hasKey() {
+        return this.needKey;
+    }
+} 
 
 const cesarCipher = {
     name: 'cesar',
     desc: 'Encript mensages using numbers. Read more...',
-    encrypt: function(msg, key, decrypt=false) {
+    needKey: true,
+    encrypt: function(msg, skey, decrypt=false) {
         let new_msg = "";
+        // TODO handle invalid key input.
+        let key = parseInt(skey);
         key = decrypt? key : - key;
 
         for (const letter of msg) {
@@ -26,23 +33,31 @@ const cesarCipher = {
         }
         return new_msg;
     },
-}
+};
 
 
 const vigenereCipher = {
     name: 'vigenere',
     desc: 'Ecnrypt mensages using words. Read More...',
+    needKey: true,
     encrypt: function(msg, key, decrypt=false) {
         let new_msg = "";
         const nows_msg = msg.replace("/\s+/g", '');
         if (key.length < nows_msg.length) {
-
+            // TODO make encrypt function for vigenereCipher
         }
     },      
-}
+};
 
 
-const polarZenitCipher = {name: 'Polar Zenit'}
+const polarZenitCipher = {
+    name: 'Polar Zenit', 
+    desc: 'Encrypt mensages through a substitution system.',
+    needKey: false,
+    encrypt: function(msg) {
+        // TODO make encrypt funtion for polarZenit
+    }
+};
 
 
 const ciphers = [
@@ -51,4 +66,4 @@ const ciphers = [
     polarZenitCipher,
 ]
 
-export default {ciphers, alpha}
+export default ciphers
